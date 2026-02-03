@@ -34,10 +34,11 @@ const AllTasks = () => {
 
   return (
     <div className="max-w-3xl mx-auto">
-      <h1 className="text-3xl font-bold text-center mb-8 text-[#ac521e]">
+      <h1 className=" mt-7 text-3xl font-bold text-center mb-8 text-[#ac521e]">
         <br />
         Task List
       </h1>
+      <br />
 
       {tasks.length === 0 ? (
         <div className="bg-[#F5C56A] rounded-3xl p-12 text-center shadow-lg">
