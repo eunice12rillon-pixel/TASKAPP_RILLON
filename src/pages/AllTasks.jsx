@@ -34,14 +34,14 @@ const AllTasks = () => {
 
   return (
     <div className="max-w-3xl mx-auto">
-      <h1 className=" mt-7 text-3xl font-bold text-center mb-8 text-[#ac521e]">
+      <h1 className=" mt-7 text-3xl font-bold text-center mb-8 text-[#3d3530]">
         <br />
         Task List
       </h1>
       <br />
 
       {tasks.length === 0 ? (
-        <div className="bg-[#F5C56A] rounded-3xl p-12 text-center shadow-lg">
+        <div className="border bg-[#ece7dd] rounded-3xl p-12 text-center shadow-lg">
           <p className="text-gray-600 text-lg mb-4">No tasks yet!</p>
           <Link
             to="/"
@@ -51,7 +51,7 @@ const AllTasks = () => {
           </Link>
         </div>
       ) : (
-        <div className="bg-[#F5C56A] rounded-3xl p-6 shadow-lg space-y-3">
+        <div className="bg-[#9b9489] rounded-3xl p-6 shadow-lg space-y-3">
           {tasks.map((task) => (
             <div
               key={task.id}

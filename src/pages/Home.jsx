@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 
 function Home() {
@@ -9,6 +9,15 @@ function Home() {
     details: "",
   });
   const [errors, setErrors] = useState({});
+  const [loaded, setLoaded] = useState(false); // New state for animation
+
+  useEffect(() => {
+    // Set loaded to true after the component is mounted
+    const timer = setTimeout(() => {
+      setLoaded(true);
+    }, 100); // Delay for fade-in effect
+    return () => clearTimeout(timer); // Cleanup
+  }, []);
 
   const handleInputChange = (e) => {
     const { name, value } = e.target;
@@ -47,7 +56,6 @@ function Home() {
     }
 
     const existingTasks = JSON.parse(localStorage.getItem("tasks")) || [];
-
     const newTask = {
       id: Date.now(),
       title: formData.title.trim(),
@@ -68,8 +76,10 @@ function Home() {
 
   return (
     <div className="flex items-center justify-center ">
-      <div className="w-full max-w-2xl">
-        <div className="bg-[#cae0ea] rounded-3xl p-8 shadow-lg">
+      <div
+        className={`w-full max-w-2xl transition-opacity duration-700 ${loaded ? "opacity-100" : "opacity-0"}`}
+      >
+        <div className="bg-[#9f9480] border rounded-3xl p-8 shadow-lg">
           <div className="space-y-4">
             <input
               type="text"
@@ -78,7 +88,9 @@ function Home() {
               value={formData.title}
               onChange={handleInputChange}
               className={`w-full px-6 py-4 rounded-2xl border-2 ${
-                errors.title ? "border-red-500 bg-white" : "border-white bg-white "
+                errors.title
+                  ? "border-red-500 bg-white"
+                  : "border-white bg-white "
               } focus:outline-none focus:ring-2 focus:ring-[#4A5A7C] text-gray-700 placeholder-pink-400`}
             />
             {errors.title && (
@@ -91,7 +103,9 @@ function Home() {
               value={formData.date}
               onChange={handleInputChange}
               className={`w-full px-6 py-4 rounded-2xl border-2 ${
-                errors.date ? "border-red-500 bg-white" : "border-white bg-white "
+                errors.date
+                  ? "border-red-500 bg-white"
+                  : "border-white bg-white "
               } focus:outline-none focus:ring-2 focus:ring-[#4A5A7C] text-gray-700`}
             />
             {errors.date && (
@@ -105,7 +119,9 @@ function Home() {
               onChange={handleInputChange}
               rows="4"
               className={`w-full px-6 py-4 rounded-2xl border-2 ${
-                errors.details ? "border-red-500 bg-white" : "border-white bg-white "
+                errors.details
+                  ? "border-red-500 bg-white"
+                  : "border-white bg-white "
               } focus:outline-none focus:ring-2 focus:ring-[#4A5A7C] text-gray-700 placeholder-gray-400 resize-none`}
             />
             {errors.details && (
@@ -116,7 +132,7 @@ function Home() {
 
         <button
           onClick={handleSubmit}
-          className="w-full mt-8 bg-[#5D6D8E] hover:bg-[#4A5A7C] text-white font-semibold py-4 rounded-2xl shadow-lg transition-colors duration-200"
+          className="border w-full mt-8 bg-[#436c55] hover:bg-[#4A5A7C] text-white font-semibold py-4 rounded-2xl shadow-lg transition-colors duration-200 border-black "
         >
           Add Task
         </button>

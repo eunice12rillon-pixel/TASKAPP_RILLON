@@ -84,11 +84,11 @@ function EditTask() {
   return (
     <div className="flex items-center justify-center">
       <div className="w-full max-w-2xl">
-        <h1 className="text-3xl py-1 font-bold text-center mb-8 text-[#343d2f]">
+        <h1 className="text-3xl py-2 font-bold text-center mb-8 text-[#343d2f]">
           Edit Task
         </h1>
 
-        <div className="bg-[#eda84d] rounded-3xl p-8 shadow-lg">
+        <div className="bg-[#c6b49c] rounded-3xl p-8 shadow-lg">
           <div className="space-y-4">
             <input
               type="text"
